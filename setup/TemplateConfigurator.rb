@@ -17,8 +17,6 @@ module Pod
       @message_bank.welcome_message
 
       ConfigureIOS.perform(configurator: self)
-      
-      end
 
       replace_variables_in_files
       clean_template_files
