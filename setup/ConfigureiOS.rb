@@ -13,7 +13,6 @@ module Pod
 
     def perform
 
-      keep_demo = no;
       prefix = nil;
       configurator.set_test_framework("xctest", "m", "ios")
 
@@ -21,7 +20,6 @@ module Pod
         :configurator => @configurator,
         :xcodeproj_path => "templates/ios/Example/PROJECT.xcodeproj",
         :platform => :ios,
-        :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
 
