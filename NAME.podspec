@@ -42,16 +42,9 @@ TODO: Add long description of the pod here.
   s.dependency 'SAModuleService'
   s.dependency 'SAConfig'
   s.dependency 'SALocalizable'
-  s.dependency 'SASpecialRequest'
   s.dependency 'SANetwork'
   s.dependency 'SANetworkHUD'
   s.dependency 'SAGlobal'
-  s.dependency 'SAHardware'
-  s.dependency 'SABottomMenu'
-  s.dependency 'SAAudio'
-  s.dependency 'SAAuthManager'
-  s.dependency 'IQKeyboardManager'
-  s.dependency 'SAScreen'  
-
+  s.dependency 'SALogin'
 
 end
