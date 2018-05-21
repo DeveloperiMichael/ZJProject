@@ -13,7 +13,7 @@ module Pod
 
     def perform
 
-      prefix = nil
+      prefix = "ZJ"
       keep_demo = :no
       
       configurator.set_test_framework("xctest", "m", "ios")
