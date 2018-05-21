@@ -13,56 +13,7 @@ module Pod
 
     def perform
 
-      keep_demo = No
-
-      framework = None
-      case framework
-        when :specta
-          configurator.add_pod_to_podfile "Specta"
-          configurator.add_pod_to_podfile "Expecta"
-
-          configurator.add_line_to_pch "@import Specta;"
-          configurator.add_line_to_pch "@import Expecta;"
-
-          configurator.set_test_framework("specta", "m", "ios")
-
-        when :kiwi
-          configurator.add_pod_to_podfile "Kiwi"
-          configurator.add_line_to_pch "@import Kiwi;"
-          configurator.set_test_framework("kiwi", "m", "ios")
-
-        when :none
-          configurator.set_test_framework("xctest", "m", "ios")
-      end
-
-      snapshots = No
-      case snapshots
-        when :yes
-          configurator.add_pod_to_podfile "FBSnapshotTestCase"
-          configurator.add_line_to_pch "@import FBSnapshotTestCase;"
-
-          if keep_demo == :no
-              puts " Putting demo application back in, you cannot do view tests without a host application."
-              keep_demo = :yes
-          end
-
-          if framework == :specta
-              configurator.add_pod_to_podfile "Expecta+Snapshots"
-              configurator.add_line_to_pch "@import Expecta_Snapshots;"
-          end
-      end
-
-      prefix = nil
-
-      loop do
-        prefix = ''
-
-        if prefix.include?(' ')
-          puts 'Your class prefix cannot contain spaces.'.red
-        else
-          break
-        end
-      end
+      configurator.set_test_framework("xctest", "m", "ios")
 
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
