@@ -13,10 +13,23 @@ module Pod
 
     def perform
 
-      prefix = "ZJ"
       keep_demo = "no"
       
       configurator.set_test_framework("xctest", "m", "ios")
+
+        prefix = nil
+
+        "TM CM UM 等等"
+
+        loop do
+            prefix = configurator.ask("What is your class prefix")
+            
+            if prefix.include?(' ')
+                puts 'Your class prefix cannot contain spaces.'.red
+                else
+                break
+            end
+        end
 
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
