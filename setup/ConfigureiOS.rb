@@ -13,13 +13,16 @@ module Pod
 
     def perform
 
-      prefix = nil;
+      prefix = nil
+      keep_demo = :no
+      
       configurator.set_test_framework("xctest", "m", "ios")
 
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
         :xcodeproj_path => "templates/ios/Example/PROJECT.xcodeproj",
         :platform => :ios,
+        :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
 
