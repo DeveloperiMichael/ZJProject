@@ -19,7 +19,7 @@ module Pod
 
         prefix = nil
 
-        "TM CM UM 等等"
+# --- 用户中心：UM，资源中心：RM，契约中心：CM，任务中心：TM，钱仓：MM，综合：OM，非业务组件：SA ---
 
         loop do
             prefix = configurator.ask("What is your class prefix")
