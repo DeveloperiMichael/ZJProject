@@ -21,22 +21,37 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/${USER_NAME}/${POD_NAME}'
+  s.homepage         = 'http://192.168.6.115:7990/users/michael.zhang/repos/${POD_NAME}/browse'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '${USER_NAME}' => '${USER_EMAIL}' }
-  s.source           = { :git => 'https://github.com/${USER_NAME}/${POD_NAME}.git', :tag => s.version.to_s }
+  s.source           = { :git => 'ssh://git@192.168.6.115:7999/~michael.zhang/${POD_NAME}.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = '${POD_NAME}/Classes/**/*'
-  
+  s.resources = '${POD_NAME}/Assets/${POD_NAME}.xcassets'
+
   # s.resource_bundles = {
   #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'SAKit'
+  s.dependency 'SAFoundation'
+  s.dependency 'SAModuleService'
+  s.dependency 'SAConfig'
+  s.dependency 'SALocalizable'
+  s.dependency 'SASpecialRequest'
+  s.dependency 'SANetwork'
+  s.dependency 'SANetworkHUD'
+  s.dependency 'SAGlobal'
+  s.dependency 'SAHardware'
+  s.dependency 'SABottomMenu'
+  s.dependency 'SAAudio'
+  s.dependency 'SAAuthManager'
+  s.dependency 'IQKeyboardManager'
+  s.dependency 'SAScreen'  
+
+
 end
