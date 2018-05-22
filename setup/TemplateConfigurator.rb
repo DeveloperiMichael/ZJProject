@@ -71,7 +71,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['POD_LICENSE', 'POD_README.md', 'NAME.podspec', '.travis.yml','Pod', podfile_path]
+      file_names = ['POD_LICENSE', 'POD_README.md', 'NAME.podspec', '.travis.yml', podfile_path]
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -122,7 +122,7 @@ module Pod
       FileUtils.mv "POD_README.md", "README.md"
       FileUtils.mv "POD_LICENSE", "LICENSE"
       FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
-      FileUtils.mv "Pod/Assets/NAME.xcassets/ReplaceMe.imageset", "Pod/Assets/#{pod_name}.xcassets/ReplaceMe.imageset"
+      FileUtils.mv "Pod/Assets/NAME.xcassets", "Pod/Assets/#{pod_name}.xcassets"
       
     end
 
