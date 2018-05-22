@@ -13,7 +13,7 @@ module Pod
 
     def perform
 
-    keep_demo = :no
+    keep_demo = :yes
       
       configurator.set_test_framework("xctest", "m", "ios")
 
