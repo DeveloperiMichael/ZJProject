@@ -133,12 +133,13 @@
         id <SAHomeProtocol>homeObject = [SAServiceManager createServiceWithProtocol:@protocol(SAHomeProtocol)];
         self.window.rootViewController = [homeObject setupHomeViewController];
         
+        //        //如果想进SAViewController调试
+        //        self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[CPDViewController alloc] init]];
+        
     }else {
         self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:loginViewController];
     }
-    
-//    //如果想进CPDViewController调试
-//    self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[TMViewController alloc] init]];
+
     
 //    //语音
 //    [SASpeechConfig setAppId:@"58d0b9dd"];
@@ -151,15 +152,15 @@
 - (void)appDidLoginNotification {
     
     id <SAHomeProtocol>homeObject = [SAServiceManager createServiceWithProtocol:@protocol(SAHomeProtocol)];
-    UIViewController *rootViewController = [homeObject setupHomeViewController];
-    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:rootViewController];
-    
-//    //自动登录  如果想进CPDViewController调试
-//    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[CPDViewController new]];
-
+    UIViewController *homeNav = [homeObject setupHomeViewController];
     [UIView transitionFromView:self.window.rootViewController.view toView:homeNav.view duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
         self.window.rootViewController = homeNav;
     }];
+    
+    //    //自动登录  如果想进SAViewController调试
+    //    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[CPDViewController new]];
+    //    self.window.rootViewController = homeNav;
+    
 }
 
 // 注册APNs成功并上报DeviceToken
