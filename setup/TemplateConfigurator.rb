@@ -122,6 +122,8 @@ module Pod
       FileUtils.mv "POD_README.md", "README.md"
       FileUtils.mv "POD_LICENSE", "LICENSE"
       FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "Pod/Assets/NAME.xcassets/ReplaceMe.imageset", "Pod/Assets/#{pod_name}.xcassets/ReplaceMe.imageset"
+      
     end
 
     def rename_classes_folder
