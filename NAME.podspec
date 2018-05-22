@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = '${POD_NAME}/Classes/**/*'
+  s.source_files = '${POD_NAME}/Classes/**/*.{h,m}'
   s.resources = '${POD_NAME}/Assets/${POD_NAME}.xcassets'
 
   # s.resource_bundles = {
