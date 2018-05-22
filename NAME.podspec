@@ -47,4 +47,6 @@ TODO: Add long description of the pod here.
   s.dependency 'SAGlobal'
   s.dependency 'SALogin'
 
+  s.requires_arc = true
+
 end
