@@ -18,10 +18,15 @@
 #import <SAKit/SAViewControllerIntercepter.h>
 #import <SAGlobal/SAUserObject.h>
 
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+@interface CPDAppDelegate ()<UNUserNotificationCenterDelegate>
+
+@end
 
 @implementation CPDAppDelegate
-
-
 
 - (NSString *)rsaPublicKey{
     return @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOTJ/mAHAoicU5zfrdHOwltud31eiuW6FS11hvoaeOPtJDtWHMzPANOSbk4UlqojeisbCYw6cLD19Tx3NNfKOt13mtBtuyDNnP7sCcPtLBB8Q8cRgf6AKYg4WN2WNvKuijRbNrLlLhb23fk4WgVNg0xdmZmO+wFMJbU0x+JCankQIDAQAB";
@@ -65,7 +70,7 @@
     //配置网络请求、微信、请求环境
     
     NSLog(@"网络环境：CIT");
-    [[SAAppConfig shareInstance] sa_setAppConfigOptions:SAAppConfigOptionNetwork | SAAppConfigOptionWechat targetType:SATargetTypeAppStore environmentType:SAEnvironmentTypeSIT];
+    [[SAAppConfig shareInstance] sa_setAppConfigOptions:SAAppConfigOptionNetwork | SAAppConfigOptionWechat targetType:SATargetTypeAppStore environmentType:SAEnvironmentTypeCIT];
     
     
     //    初始化JPush
@@ -77,7 +82,7 @@
                            appKey:[self sa_jpushAppKey]
                           channel:nil
                  apsForProduction:NO];
-    NSLog(@"%@",[self sa_jpushAppKey]);
+    
     //  公司 的 appkey: 8a3d910b13be8bfbd9a0cf23,设备类型i 企业的:7eaed6ccd1a84f5620fbae06,iq  [self sa_jpushAppKey]
     
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
