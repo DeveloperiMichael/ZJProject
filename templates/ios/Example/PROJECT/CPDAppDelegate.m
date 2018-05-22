@@ -118,7 +118,7 @@
     [[self rsaPublicKey] writePublicKey];
     
     //设置 rootViewController
-    self.window = [[SAScreenExtendWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     UIViewController<SALoginServiceProtocol> *loginViewController = [SAServiceManager createServiceWithProtocol:@protocol(SALoginServiceProtocol)];
     //登陆成功回调
@@ -128,12 +128,12 @@
         id <SAHomeProtocol>homeObject = [SAServiceManager createServiceWithProtocol:@protocol(SAHomeProtocol)];
         self.window.rootViewController = [homeObject setupHomeViewController];
         
-        //        self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[TMViewController alloc] init]];
     }else {
         self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:loginViewController];
     }
     
-    //    self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[TMViewController alloc] init]];
+//    //如果想进CPDViewController调试
+//    self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[TMViewController alloc] init]];
     
 //    //语音
 //    [SASpeechConfig setAppId:@"58d0b9dd"];
@@ -147,13 +147,14 @@
     
     id <SAHomeProtocol>homeObject = [SAServiceManager createServiceWithProtocol:@protocol(SAHomeProtocol)];
     UIViewController *rootViewController = [homeObject setupHomeViewController];
-    self.window.rootViewController = rootViewController;
+    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:rootViewController];
     
-    //    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[TMViewController new]];
-    //
-    //    [UIView transitionFromView:self.window.rootViewController.view toView:homeNav.view duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
-    //        self.window.rootViewController = homeNav;
-    //    }];
+//    //自动登录  如果想进CPDViewController调试
+//    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[CPDViewController new]];
+
+    [UIView transitionFromView:self.window.rootViewController.view toView:homeNav.view duration:0.5 options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
+        self.window.rootViewController = homeNav;
+    }];
 }
 
 // 注册APNs成功并上报DeviceToken
