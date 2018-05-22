@@ -43,7 +43,7 @@ module Pod
       # or a framework won't be created, which is now default
       `touch Pod/Classes/ReplaceMe.m`
 
-#`mv ./templates/ios/* ./`
+      `mv ./templates/ios/* ./`
 
       # remove podspec for osx
       `rm ./NAME-osx.podspec`
