@@ -133,8 +133,8 @@
         id <SAHomeProtocol>homeObject = [SAServiceManager createServiceWithProtocol:@protocol(SAHomeProtocol)];
         self.window.rootViewController = [homeObject setupHomeViewController];
         
-        //        //如果想进SAViewController调试
-        //        self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[CPDViewController alloc] init]];
+//        //如果想进SAViewController调试
+//        self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:[[CPDViewController alloc] init]];
         
     }else {
         self.window.rootViewController = [[SANavigationController alloc] initWithRootViewController:loginViewController];
@@ -157,9 +157,9 @@
         self.window.rootViewController = homeNav;
     }];
     
-    //    //自动登录  如果想进SAViewController调试
-    //    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[CPDViewController new]];
-    //    self.window.rootViewController = homeNav;
+//    //自动登录  如果想进SAViewController调试
+//    SANavigationController *homeNav = [[SANavigationController alloc] initWithRootViewController:[CPDViewController new]];
+//    self.window.rootViewController = homeNav;
     
 }
 
