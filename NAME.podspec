@@ -28,14 +28,23 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'ssh://git@192.168.6.115:7999/~michael.zhang/${POD_NAME}.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
+  #控制安装 Pod 的时候判断使用源码还是二进制库
+  $lib = ENV['use_lib']
+  $lib_name = ENV["#{s.name}_use_lib"]
+
+  if $lib || $lib_name
+  s.source = { :http => 'http://192.168.6.49/ios/${POD_NAME}/3.2/${POD_NAME}.zip' }
+  s.ios.vendored_libraries = "*.a"
+  s.source_files = '*.h'
+  s.resources = '${POD_NAME}.xcassets'
+  else
+  #源码
+  s.source = { :git => 'ssh://git@192.168.6.115:7999/xdwios/${POD_NAME}.git', :tag => s.version.to_s }
   s.source_files = '${POD_NAME}/Classes/**/*.{h,m}'
   s.resources = '${POD_NAME}/Assets/${POD_NAME}.xcassets'
-
-  # s.resource_bundles = {
-  #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
-  # }
+  end
 
   s.dependency 'SAKit'
   s.dependency 'SAFoundation'
